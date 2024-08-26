@@ -1,0 +1,27 @@
+images:
+  - location: "/Users/rtalur/ubuntu-22.04-server-cloudimg-arm64.raw"
+    arch: "aarch64"
+mounts:
+containerd:
+  system: false
+  user: false
+vmType: vz
+cpus: 6
+memory: 8GiB
+rosetta:
+  enabled: true
+  binfmt: true
+networks:
+  #- lima: user-v2
+  #- vzNAT: true
+  - socket: "/opt/homebrew/var/run/socket_vmnet"
+additionalDisks:
+  - name: "rookdisk"
+    format: false
+caCerts:
+  files:
+    - /Users/rtalur/.minikube/ca.crt
+portForwards:
+  - guestPortRange: [1, 65535]
+    guestIP: "0.0.0.0"
+    ignore: true
